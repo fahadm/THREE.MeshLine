@@ -13,7 +13,7 @@ import {
 } from "three";
 import { MeshLineUtils } from "./MeshlineUtils";
 
-interface MeshLineAttributes
+export interface MeshLineAttributes
 {
 	next: BufferAttribute;
 	uv: BufferAttribute;
@@ -25,7 +25,7 @@ interface MeshLineAttributes
 	position: BufferAttribute;
 }
 
-export class Meshline extends Object3D
+export class MeshLine extends Object3D
 {
 	public matrixWorld: Matrix4;
 
@@ -43,17 +43,17 @@ export class Meshline extends Object3D
 
 	private counters: number[];
 
-	private geometry: BufferGeometry | Geometry;
+	public geometry: BufferGeometry | Geometry;
 
 	private widthCallback: Function;
 
 	private side: number[];
 
-	private attributes: MeshLineAttributes;
+	public attributes: MeshLineAttributes;
 
-	public MeshLine()
+	public constructor()
 	{
-
+		super();
 		this.positions = [];
 
 		this.previous = [];
@@ -76,7 +76,7 @@ export class Meshline extends Object3D
 		this.matrixWorld = matrixWorld;
 	}
 
-	public setGeometry(g: Geometry | BufferGeometry, c: Function)
+	public setGeometry(g: Geometry | BufferGeometry, c: Function = undefined)
 	{
 		this.widthCallback = c;
 

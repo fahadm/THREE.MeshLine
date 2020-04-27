@@ -2,11 +2,11 @@ import {Color, ShaderMaterial, Vector2} from "three";
 import {MeshlineVertexShader} from "./shaders/MeshlineVertexShader";
 import {MeshlineFragmentShader} from "./shaders/MeshlineFragmentShader";
 
-class MeshLineMaterial extends ShaderMaterial
+export class MeshLineMaterial extends ShaderMaterial
 {
-	private static vertexShader = MeshlineVertexShader.SHADER;
+	public static vertexShader = MeshlineVertexShader.SHADER;
 
-	private static fragmentShader = MeshlineFragmentShader.SHADER;
+	public  static fragmentShader = MeshlineFragmentShader.SHADER;
 
 	public type = 'MeshLineMaterial';
 

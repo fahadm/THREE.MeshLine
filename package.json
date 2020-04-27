@@ -2,9 +2,16 @@
   "name": "three.meshline",
   "version": "1.2.0",
   "description": "Mesh replacement for THREE.Line",
-  "main": "src/THREE.MeshLine.js",
+  "main": "build/meshline.js",
+  "typings": "build/declarations/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf build",
+    "start": "webpack --mode development --watch --progress",
+    "start:example": "webpack-dev-server --config webpack.config.example.js --mode development --progress",
+    "build": "npm run clean&& webpack --mode production --progress --config webpack.config.js",
+    "lint": "tslint --project tsconfig.json",
+    "prettier": "prettier --write \"**/*.js\" \"**/*.jsx\" \"**/*.tsx\" \"**/*.ts\"",
+    "prepare-release": "standard-version"
   },
   "repository": {
     "type": "git",
@@ -28,9 +35,17 @@
     "url": "https://github.com/spite/THREE.MeshLine/issues"
   },
   "homepage": "https://github.com/spite/THREE.MeshLine#readme",
-  "dependencies": {
-    "awesome-typescript-loader": "^5.2.1",
-    "source-map-loader": "^0.2.4",
+  "dependencies": {},
+  "peerDependencies": {
     "three": "^0.115.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "ts-loader": "^7.0.1",
+    "typescript": "^3.8.3",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3",
+    "three": "^0.115.0",
+    "webpack-bundle-analyzer": "^3.7.0"
   }
 }

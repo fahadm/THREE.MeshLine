@@ -1,26 +1,26 @@
+const path = require('path');
+
 module.exports = {
-	entry: "./src/index.ts",
-	output: {
-		filename: "./dist/bundle.js",
-	},
-
-	// Enable sourcemaps for debugging webpack's output.
-	devtool: "source-map",
-
-	resolve: {
-		// Add '.ts' and '.tsx' as resolvable extensions.
-		extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
-	},
+	entry: './src/index.ts',
+	externals: ['three'],
 
 	module: {
-		loaders: [
-			// All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-			{ test: /\.tsx?$/, loader: "awesome-typescript-loader" }
+		rules: [
+			{
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/,
+			},
 		],
-
-		preLoaders: [
-			// All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-			{ test: /\.js$/, loader: "source-map-loader" }
-		]
+	},
+	resolve: {
+		extensions: [ '.tsx', '.ts', '.js' ],
+	},
+	output: {
+		path: path.resolve(__dirname, 'build'),
+		filename: 'meshline.js',
+		library: 'meshline',
+		libraryTarget: 'umd',
+		umdNamedDefine: true,
 	},
 };
